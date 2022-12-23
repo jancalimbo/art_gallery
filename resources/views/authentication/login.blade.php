@@ -3,14 +3,15 @@
 @section('content')
 
 
-  @if(session('message'))
-    <div class="container col-md-6 offset-md-3 mt-5 alert alert-success text-center">{{ session('message') }}</div>
-  @endif
-  @if(session('error'))
-    <div class="container col-md-6 offset-md-3 mt-5 alert alert-danger text-center">{{ session('error') }}</div>
-  @endif
+ 
  
   <div class="login-background">
+    @if(session('message'))
+    <div class="container col-md-6 offset-md-3 mt-5 alert alert-success text-center">{{ session('message') }}</div>
+    @endif
+    @if(session('error'))
+      <div class="container col-md-6 offset-md-3 mt-5 alert alert-danger text-center">{{ session('error') }}</div>
+    @endif
     <div id="login-box" class="container col-md-6 offset-md-3 card p-5">
     
       <form action="{{'/'}}" method="POST">
@@ -60,7 +61,7 @@
     }
 
     .login-background{
-      padding-top: 9em;
+      padding-top: 7em;
       width: 100%;
       height: 100vh;
       background-image: url('login-2.jpg');
