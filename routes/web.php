@@ -35,7 +35,10 @@ Route::group(['middleware'=> ['auth', 'verified']],function(){
             Route::get('/catalogue', 'index')->name('curator-view')->middleware('role:curator');
             Route::get('/', 'gallery')->name('galleria');
             Route::get('/add', 'create')->name('add-art')->middleware('role:curator');
-            // Route::get('/update/{equipment}', 'update')->name('update-item')->middleware('role:curator');
+            Route::get('/orders', 'orderList')->name('see-orders')->middleware('role:curator');
+            Route::get('/orders/{art}', 'ordersByArt')->middleware('role:curator');
+            Route::get('/confirm-payment/{art}', 'confirmPayment')->middleware('role:curator');
+            Route::get('/records', 'orderRecords')->name('records')->middleware('role:curator');
             // Route::get('/delete/{equipment}', 'delete')->name('delete-item')->middleware('role:curator');
             // Route::get('/like/{equipment}', 'like')->name('like');
             // Route::get('/add-to-cart/{equipment}', 'addToCart')->name('add-to-cart')->middleware('role:viewer');
@@ -43,7 +46,7 @@ Route::group(['middleware'=> ['auth', 'verified']],function(){
     });
     Route::controller(SiteController::class)->group(function (){
         Route::get('/lobby', 'lobby')->name('lobby')->middleware('role:viewer');
-        Route::get('/art/{art}', 'viewArtDetails')->middleware('role:viewer');
+        Route::get('/art/{art}', 'viewArtDetails');
         Route::get('/order/{art}', 'orderArt')->middleware('role:viewer');
         // Route::get('/cart', 'cart')->name('cart')->middleware('role:viewer');
         // Route::get('/checkout', 'checkout')->name('checkout')->middleware('role:viewer');

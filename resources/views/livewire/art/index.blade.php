@@ -12,7 +12,11 @@
         <div id="" class="row">
           @if ($arts->count() == 0)
             <h1 class="text-center">
-              No equipment in inventory yet
+              <div class="card p-5" style="background: rgba(0, 0, 0, 0.705); border-radius: 10px;">
+                <h3 class="text-center text-light">
+                  Try adding something to gallery.
+                </h3>
+              </div>
             </h1>
   
             @else

@@ -14,7 +14,7 @@ class AuthController extends Controller
     //cher angel functions
     public function loginForm() {
         if(auth()->check()){
-            return redirect('/equipments/index');
+            return redirect(route('lobby'));
         }
     
         return view('authentication.login');
@@ -24,7 +24,7 @@ class AuthController extends Controller
 
     public function registerForm() {
         if(auth()->check()){
-            return redirect('/equipments/index');
+            return redirect(route('lobby'));
         }
         return view('authentication.register');
     }

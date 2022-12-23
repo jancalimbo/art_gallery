@@ -5,9 +5,13 @@
     <div class="uindex-page container mt-4">
       <div id="" class="row">
         @if($arts->count() == 0)
-         <h1 class="text-center mt-5">
-          No products added yet
-        </h1>         
+          <h1 class="text-center mt-5">
+            <div class="card p-5" style="background: rgba(0, 0, 0, 0.705); border-radius: 10px;">
+              <h3 class="text-center text-light">
+                Nothing is shown in gallery.
+              </h3>
+            </div>
+          </h1>         
         @else
          @foreach ($arts as $art )
          <div class="card bg-light p-3 m-3 w-25" style="box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.266); ">

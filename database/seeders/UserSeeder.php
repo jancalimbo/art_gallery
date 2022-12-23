@@ -25,6 +25,20 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
                 'role' => "viewer",
             ],
+            [
+                'name' => 'Gesselle Lopoz',
+                'password' => bcrypt('viewer'),
+                'email' => 'gesselle@mailnator.com',
+                'email_verified_at' => now(),
+                'role' => "viewer",
+            ],
+            [
+                'name' => 'Eddie Gingco',
+                'password' => bcrypt('viewer'),
+                'email' => 'eddie@mailnator.com',
+                'email_verified_at' => now(),
+                'role' => "viewer",
+            ],
 
         ];
 

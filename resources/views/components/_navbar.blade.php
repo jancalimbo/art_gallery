@@ -1,11 +1,27 @@
 <nav id="navbar-box" class="navbar navbar-expand-lg ">
     <div class="container-fluid">
-        <h1><a id="navbar-link-title" class="navbar-brand" href="{{route('lobby')}}">
-            <img id="" class="" src="{{ asset('logo.png')}}" alt="">
-        </a></h1>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        @role('curator')
+            <h1>
+                <a id="navbar-link-title" class="navbar-brand" href="{{route('curator-view')}}">
+                <img id="" class="" src="{{ asset('logo.png')}}" alt="">
+                </a>
+            </h1>
+        @endrole
+        @role('viewer')
+            <h1>
+                <a id="navbar-link-title" class="navbar-brand" href="{{route('lobby')}}">
+                <img id="" class="" src="{{ asset('logo.png')}}" alt="">
+                </a>
+            </h1>
+        @endrole
+        @if(auth()->guest())
+            <h1>
+                <a id="navbar-link-title" class="navbar-brand" href="{{route('lobby')}}">
+                <img id="" class="" src="{{ asset('logo.png')}}" alt="">
+                </a>
+            </h1>
+        @endif
+        
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 
@@ -16,60 +32,39 @@
                 <li class="nav-item">
                     <a id="navbar-links" class="nav-link" href="{{route('galleria')}}">Gallery</a>
                 </li>
-                {{-- <li class="nav-item">
-                    <a id="navbar-links" class="nav-link" href="{{url('/authors')}}">Discover Users</a>
-                </li>
-                <li class="nav-item">
-                    
-                    <a id="navbar-links" class="nav-link" href="{{ route('home') }}"><i class="fa-solid fa-house"></i></a>   
-                </li>
-
-                
-                <li class="nav-item">
-                    
-                   <a id="navbar-links" class="nav-link" href="{{ route('cart') }}">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        @php
-                            $count = App\Models\Cart::where('user_id', auth()->user()->id)->count();
-                        @endphp
-                        <div class="cart-count-div  ">
-                            <span class="cart-count">{{ $count }}</span>
-
-                        </div>
-                        
-                    </a>
-                </li>
-
-              
-                 --}}
                
                 @endrole
 
-                @role('admin')
+                @role('curator')
                     <li class="nav-item">
-                        
-                        <a id="navbar-links" class="nav-link" href="{{ route('admin-index') }}">
-                            <span>
-                                <i class="fa-solid fa-user"></i>
-                            </span>
-                            <span>
-                              
-                            </span>
+                        <a id="navbar-links" class="nav-link" href="{{route('curator-view')}}">Galleria</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="navbar-links" class="nav-link" href="{{route('galleria')}}">
+                            Exhibit
                         </a>
-                        
+                    </li>
+                    <li class="nav-item">
+                        <a id="navbar-links" class="nav-link" href="{{ route('see-orders') }}">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="navbar-links" class="nav-link" href="{{route('records')}}">
+                            Records
+                        </a>
                     </li>
                 @endrole
 
                 @hasanyrole('curator|viewer')
-                    {{-- <li class="nav-item">
-                        
-                        <a id="navbar-links" class="nav-link" href="{{ route('user-index') }}">Arts</a>  
-                        
-                    </li> --}}
+                   
                     <li class="nav-item">
                         
                         <a id="navbar-links" class="nav-link" href="/logout">Leave</a>
                         
+                        
+                    </li>
+                    <li class="nav-item">
+                        
+                        <a id="navbar-links" class="nav-link" href="" onclick="return: false;" style="color: black">{{ Auth::user()->name }}</a>  
                         
                     </li>
                 @endrole
