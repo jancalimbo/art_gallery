@@ -39,9 +39,8 @@ Route::group(['middleware'=> ['auth', 'verified']],function(){
             Route::get('/orders/{art}', 'ordersByArt')->middleware('role:curator');
             Route::get('/confirm-payment/{art}', 'confirmPayment')->middleware('role:curator');
             Route::get('/records', 'orderRecords')->name('records')->middleware('role:curator');
-            // Route::get('/delete/{equipment}', 'delete')->name('delete-item')->middleware('role:curator');
-            // Route::get('/like/{equipment}', 'like')->name('like');
-            // Route::get('/add-to-cart/{equipment}', 'addToCart')->name('add-to-cart')->middleware('role:viewer');
+            Route::get('/update/{art}', 'editArtdetails')->middleware('role:curator');
+            Route::get('/delete/{art}', 'deleteArt')->middleware('role:curator');
         });
     });
     Route::controller(SiteController::class)->group(function (){

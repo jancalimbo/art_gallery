@@ -39,4 +39,10 @@ class ArtController extends Controller
         $orders = Order::where('status', 'paid')->get();
         return view('pages.art.admin.records', compact('orders'));
     }
+    public function editArtDetails($id){
+        return view('pages.art.admin.edit-art', compact('id'));
+    }
+    public function deleteArt($id){
+        return view('pages.art.admin.deleteArt', compact('id'));
+    }
 }

@@ -2,7 +2,10 @@
     @role('curator')
       <div class="container col-md-6 offset-md-3 mt-3 alert alert-secondary text-center">This is how the user sees the items in the user view.</div>
     @endrole
-    <div class="uindex-page container mt-4">
+    <div class="container mt-4">
+      <div class="d-flex justify-content-end" style="width: 25%">
+        <input id="search" type="text" class="search form-control " placeholder="Find artwork.." wire:model.lazy="search">
+      </div>
       <div id="" class="row">
         @if($arts->count() == 0)
           <h1 class="text-center mt-5">
@@ -30,22 +33,6 @@
                       @endforeach
                     </div>
                   </div>
-                  {{-- <div class="card-footer">
-                    <a class="btn" href="{{url('/arts/like',['art'=>$art->id]) }}">
-                        <span>
-                          <i class="fa-regular fa-heart"></i>
-                        </span>
-                        <span>{{ $art->likes }}</span>
-                    </a>
-                    @role('viewer')
-                     <a class="btn" href="{{url('/arts/comment',['art'=>$art->id]) }}"> 
-                         <i class="fa-regular fa-comment"></i>
-                     </a>
-                     <a class="btn" href="{{url('/arts/add-to-cart',['art'=>$art->id]) }}">
-                         <i class="fa-solid fa-cart-shopping"></i>
-                     </a>
-                    @endrole
-                  </div> --}}
                    
                   </div>
                 </a>

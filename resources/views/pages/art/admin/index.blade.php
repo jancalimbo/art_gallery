@@ -14,12 +14,7 @@
     .inventory {
       width: 100%;
       height: 100vh;
-      /* background-image: url('/admin-bg.jpg'); */
-      /* opacity: 0.2;
-      op */
       background-size: contain;
-      /* object-fit: contain; */
-      /* background-repeat: no-repeat; */
     }
 
     .inventory .container {

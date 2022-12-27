@@ -19,4 +19,19 @@ class Art extends Model
         'price',
         'status',
     ];
+
+    public function scopeSearch($query, $terms){
+        collect(explode(" ", $terms))
+            ->filter()
+            ->each(function($term) use($query){
+                $term = '%'.$term.'%';
+
+                $query->where('name', 'like', $term)
+                    ->orWhere('artist', 'like', $term)
+                    ->orWhere('code', 'like', $term)
+                    ->orWhere('price', 'like', $term);
+            });
+
+
+    }
 }
